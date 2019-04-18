@@ -1,0 +1,37 @@
+<%= form_with(model: billingstatement, local: true) do |form| %>
+  <% if billingstatement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(billingstatement.errors.count, "error") %> prohibited this billingstatement from being saved:</h2>
+
+      <ul>
+      <% billingstatement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date, id: :billingstatement_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :billingstatement_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total %>
+    <%= form.text_field :total, id: :billingstatement_total %>
+  </div>
+
+  <div class="field">
+    <%= form.label :statement_num %>
+    <%= form.number_field :statement_num, id: :billingstatement_statement_num %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

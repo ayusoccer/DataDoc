@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @billingstatement.date %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @billingstatement.description %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @billingstatement.total %>
+</p>
+
+<p>
+  <strong>Statement num:</strong>
+  <%= @billingstatement.statement_num %>
+</p>
+
+<%= link_to 'Edit', edit_billingstatement_path(@billingstatement) %> |
+<%= link_to 'Back', billingstatements_path %>
