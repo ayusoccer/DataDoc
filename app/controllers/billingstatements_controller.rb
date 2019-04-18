@@ -1,5 +1,5 @@
 class BillingstatementsController < ApplicationController
-  before_action :set_billingstatement, only: [:show, :edit, :update, :destroy]
+  before_action :set_billingstatement, only: %i[show edit update destroy]
 
   # GET /billingstatements
   # GET /billingstatements.json
@@ -9,8 +9,7 @@ class BillingstatementsController < ApplicationController
 
   # GET /billingstatements/1
   # GET /billingstatements/1.json
-  def show
-  end
+  def show; end
 
   # GET /billingstatements/new
   def new
@@ -18,8 +17,7 @@ class BillingstatementsController < ApplicationController
   end
 
   # GET /billingstatements/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /billingstatements
   # POST /billingstatements.json
@@ -62,13 +60,14 @@ class BillingstatementsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_billingstatement
-      @billingstatement = Billingstatement.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def billingstatement_params
-      params.require(:billingstatement).permit(:date, :description, :total, :statement_num)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_billingstatement
+    @billingstatement = Billingstatement.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def billingstatement_params
+    params.require(:billingstatement).permit(:date, :description, :total, :statement_num)
+  end
 end

@@ -1,5 +1,5 @@
 class TreatmentsController < ApplicationController
-  before_action :set_treatment, only: [:show, :edit, :update, :destroy]
+  before_action :set_treatment, only: %i[show edit update destroy]
 
   # GET /treatments
   # GET /treatments.json
@@ -9,8 +9,7 @@ class TreatmentsController < ApplicationController
 
   # GET /treatments/1
   # GET /treatments/1.json
-  def show
-  end
+  def show; end
 
   # GET /treatments/new
   def new
@@ -18,8 +17,7 @@ class TreatmentsController < ApplicationController
   end
 
   # GET /treatments/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /treatments
   # POST /treatments.json
@@ -62,13 +60,14 @@ class TreatmentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_treatment
-      @treatment = Treatment.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def treatment_params
-      params.require(:treatment).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_treatment
+    @treatment = Treatment.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def treatment_params
+    params.require(:treatment).permit(:name)
+  end
 end

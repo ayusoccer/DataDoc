@@ -5,17 +5,17 @@ class PatientsControllerTest < ActionDispatch::IntegrationTest
     @patient = patients(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get patients_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_patient_url
     assert_response :success
   end
 
-  test "should create patient" do
+  test 'should create patient' do
     assert_difference('Patient.count') do
       post patients_url, params: { patient: { email: @patient.email, first_name: @patient.first_name, insurance: @patient.insurance, last_name: @patient.last_name } }
     end
@@ -23,22 +23,22 @@ class PatientsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to patient_url(Patient.last)
   end
 
-  test "should show patient" do
+  test 'should show patient' do
     get patient_url(@patient)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_patient_url(@patient)
     assert_response :success
   end
 
-  test "should update patient" do
+  test 'should update patient' do
     patch patient_url(@patient), params: { patient: { email: @patient.email, first_name: @patient.first_name, insurance: @patient.insurance, last_name: @patient.last_name } }
     assert_redirected_to patient_url(@patient)
   end
 
-  test "should destroy patient" do
+  test 'should destroy patient' do
     assert_difference('Patient.count', -1) do
       delete patient_url(@patient)
     end

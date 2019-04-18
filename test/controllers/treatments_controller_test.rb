@@ -5,17 +5,17 @@ class TreatmentsControllerTest < ActionDispatch::IntegrationTest
     @treatment = treatments(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get treatments_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_treatment_url
     assert_response :success
   end
 
-  test "should create treatment" do
+  test 'should create treatment' do
     assert_difference('Treatment.count') do
       post treatments_url, params: { treatment: { name: @treatment.name } }
     end
@@ -23,22 +23,22 @@ class TreatmentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to treatment_url(Treatment.last)
   end
 
-  test "should show treatment" do
+  test 'should show treatment' do
     get treatment_url(@treatment)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_treatment_url(@treatment)
     assert_response :success
   end
 
-  test "should update treatment" do
+  test 'should update treatment' do
     patch treatment_url(@treatment), params: { treatment: { name: @treatment.name } }
     assert_redirected_to treatment_url(@treatment)
   end
 
-  test "should destroy treatment" do
+  test 'should destroy treatment' do
     assert_difference('Treatment.count', -1) do
       delete treatment_url(@treatment)
     end
