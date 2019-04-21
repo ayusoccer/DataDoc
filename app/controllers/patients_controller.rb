@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: %i[show edit update destroy]
+  before_action :set_patient, except: [:create, :new, :index]
 
   # GET /patients
   # GET /patients.json
@@ -9,7 +9,25 @@ class PatientsController < ApplicationController
 
   # GET /patients/1
   # GET /patients/1.json
-  def show; end
+  def show
+    @treatments = Treatment.all
+  end
+
+  def add_treatment
+    if params[:treatment_id].present?
+      @treatment = Treatment.find(params[:treatment_id])
+      @patient.treatments << @treatment unless @patient.treatments.include?(@treatment)
+    end
+    redirect_to "/patients/#{@patient.id}"
+  end
+
+  def delete_treatment
+    if params[:treatment_id].present?
+      @treatment = Treatment.find(params[:treatment_id])
+      @patient.treatments.delete(@treatment)
+    end
+    redirect_to "/patients/#{@patient.id}"
+  end
 
   # GET /patients/new
   def new
@@ -17,7 +35,8 @@ class PatientsController < ApplicationController
   end
 
   # GET /patients/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /patients
   # POST /patients.json

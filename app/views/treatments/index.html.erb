@@ -2,23 +2,24 @@
 
 <h1>Treatments</h1>
 
-<table>
-  <thead>
+<table class="table table-hover">
+  <thead class="thead-dark">
     <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
+      <th scope="col">Treatment</th>
+      <th scope="col">Number of Patients</th>
+      <th scope="col">Destroy</th>
+      <th scope="col">Edit</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @treatments.each do |treatment| %>
-      <tr>
-        <td><%= treatment.name %></td>
-        <td><%= link_to 'Show', treatment %></td>
+      <% @treatments.each do |treatment| %>
+        <tr>
+        <td><%= link_to treatment.name, "/treatments/#{treatment.id}" %> </td>
+        <td><%= pluralize treatment.patients.size, 'patient' %></td> 
+        <td><%= link_to 'Destroy', treatment, method: :delete, data: { confirm: 'Are you sure?' } %> </td> 
         <td><%= link_to 'Edit', edit_treatment_path(treatment) %></td>
-        <td><%= link_to 'Destroy', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+        </tr>
+      <% end %>
   </tbody>
 </table>
 

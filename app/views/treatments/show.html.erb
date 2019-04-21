@@ -1,9 +1,30 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @treatment.name %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @treatment.name %>
-</p>
+<%= link_to 'Edit', "/treatments/#{@treatment.id}/edit" %> |
+<%= link_to 'Destroy', "/treatments/#{@treatment.id}", method: :delete %>
 
-<%= link_to 'Edit', edit_treatment_path(@treatment) %> |
-<%= link_to 'Back', treatments_path %>
+<h2>Patients</h2>
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Patient</th>
+      <th scope="col">End Treatment</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @treatment.patients.each do |patient| %>
+        <tr>
+        <td><%= link_to patient.full_name, "/patients/#{patient.id}" %> </td>
+        <td><%= link_to 'End Treatment', "/treatments/#{@treatment.id}/patients/#{patient.id}", method: :delete %></td> 
+        <td><%= link_to 'Edit', "/patients/#{patient.id}/edit" %></td> 
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<h3>Add a patient:</h3>
+<%= form_with url: "/treatments/#{@treatment.id}/patients" do |form| %>
+  <%= form.collection_select :patient_id, @patients, :id, :full_name, prompt: true %>
+  <input class="btn btn-primary" type="submit" value="Add patient">
+<% end %>
