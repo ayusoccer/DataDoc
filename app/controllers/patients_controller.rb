@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, except: [:create, :new, :index]
+  before_action :set_patient, except: %i[create new index]
 
   # GET /patients
   # GET /patients.json
@@ -35,8 +35,7 @@ class PatientsController < ApplicationController
   end
 
   # GET /patients/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /patients
   # POST /patients.json

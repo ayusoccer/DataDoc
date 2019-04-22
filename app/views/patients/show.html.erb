@@ -1,6 +1,6 @@
 <h1><%= @patient.full_name %></h1>
 
-<%= link_to 'Edit', "/patients/#{@patient.id}/edit" %> | <%= link_to 'Destroy', "/patients/#{@patient.id}", method: :delete %> | <%= link_to 'Back', '/patients' %>
+<%= link_to 'Edit Patient', "/patients/#{@patient.id}/edit" %> | <%= link_to 'Delete Patient', "/patients/#{@patient.id}", method: :delete %> | <%= link_to 'Go Back', '/patients' %> <br/> <br/>
 
 <h3>Treatments:</h3>
 <table class="table table-hover">
@@ -26,4 +26,80 @@
 <%= form_with url: "/patients/#{@patient.id}/treatments" do |form| %>  
   <%= form.collection_select :treatment_id, @treatments, :id, :name, prompt: true %>
   <input class="btn btn-primary" type="submit" value="Add treatment">
-<% end %>
+<% end %> <br/> <br/>
+
+<h3>Reports:</h3>
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Number</th>
+      <th scope="col">Date</th>
+      <th scope="col">Notes</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead> <br/>
+  <tbody>
+      <% @patient.reports.each do |report| %>
+        <tr>
+        <td><%= report.report_num %> </td>
+        <td><%= report.date %> </td>
+        <td><%= report.notes %> </td>
+        <td><%= link_to 'Delete Report', "/patients/#{@patient.id}/reports/#{report.id}", method: :delete %></td> 
+        <td><%= link_to 'Edit Report', "/reports/#{report.id}/edit" %></td> 
+        </tr>
+      <% end %>
+  </tbody>
+</table> <br/>
+
+<br/>
+<h3>Add a Report</h3>
+<%= form_with url: "/patients/#{@patient.id}/reports" do |form| %>
+  <%= form.label :report_Number %>
+  <%= form.number_field 'report[report_num]' %><br>
+  <%= form.label :date %>      
+  <%= form.date_field 'report[date]' %><br>
+  <%= form.label :notes %>
+  <%= form.text_area 'report[notes]' %><br>
+  <input class="btn btn-primary" type="submit" value="Add Report">
+<% end %> <br/> <br/>
+
+<h3>Billing Statements:</h3>
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Number</th>
+      <th scope="col">Date</th>
+      <th scope="col">Description</th>
+      <th scope="col">Total</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead> <br/>
+  <tbody>
+      <% @patient.billingstatements.each do |billingstatement| %>
+        <tr>
+        <td><%= billingstatement.statement_num %> </td>
+        <td><%= billingstatement.date %> </td>
+        <td><%= billingstatement.description %> </td>
+        <td><%= billingstatement.total %> </td>
+        <td><%= link_to 'Delete Bill', "/patients/#{@patient.id}//billingstatements/#{billingstatement.id}", method: :delete %></td> 
+        <td><%= link_to 'Edit Bill', "/billingstatements/#{billingstatement.id}/edit" %></td> 
+        </tr>
+      <% end %>
+  </tbody>
+</table> <br/>
+
+<br/>
+<h3>Add a Billing Statement</h3>
+<%= form_with url: "/patients/#{@patient.id}/billingstatements" do |form| %>
+  <%= form.label :statement_Number %>
+  <%= form.number_field 'billingstatement[statment_num]' %><br>
+  <%= form.label :date %>      
+  <%= form.date_field 'billingstatement[date]' %><br>
+  <%= form.label :description %>
+  <%= form.text_area 'billingstatement[description]' %><br>
+  <%= form.label :total %>
+  <%= form.number_field 'billingstatement[total]', :step => 0.01 %><br>
+  <input class="btn btn-primary" type="submit" value="Add Bill">
+<% end %> 

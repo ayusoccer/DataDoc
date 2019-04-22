@@ -1,7 +1,7 @@
 # The Patient class.
 class Patient < ApplicationRecord
-  has_many :reports
-  has_many :billing_statements
+  has_many :reports, dependent: :destroy
+  has_many :billingstatements, dependent: :destroy
   has_many :patients_treatments, dependent: :destroy
   has_many :treatments, through: :patients_treatments
   validates :last_name, presence: true
