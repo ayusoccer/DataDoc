@@ -1,18 +1,16 @@
 class BillingstatementsController < ApplicationController
-  before_action :set_patient, only: [:create, :edit, :update, :destroy]
-  before_action :set_billingstatement, only: [:edit, :update, :destroy]
+  before_action :set_patient, only: %i[create edit update destroy]
+  before_action :set_billingstatement, only: %i[edit update destroy]
 
   # GET /billingstatements
   # GET /billingstatements.json
 
   # GET /billingstatements/1
   # GET /billingstatements/1.json
-  def show
-  end
+  def show; end
 
   # GET /billingstatements/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /billingstatements
   # POST /billingstatements.json

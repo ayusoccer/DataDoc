@@ -12,3 +12,19 @@
 
 <% end %>
 </div>
+
+<h3 align="center"><%= link_to 'Back to Login', '/login' %></h3>
+
+<% require 'sendgrid-ruby'
+
+sendgrid = SendGrid::Client.new do |c|
+  c.api_key = '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'
+end
+
+email = SendGrid::Mail.new do |m|
+  m.to        =  'ayushp@seas.upenn.edu'
+  m.from      = 'ayusoccer@gmail.com'
+  m.subject = 'Thanks for Signing Up for Data Doc!'
+end
+
+#sendgrid.send(email)%>

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
       # Deliver the signup email
-      # UserNotifier.send_signup_email(@user).deliver
+      user.mail_to
       redirect_to '/patients'
     else
       redirect_to '/signup'

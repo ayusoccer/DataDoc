@@ -1,13 +1,11 @@
 class ReportsController < ApplicationController
-  before_action :set_patient, only: [:create, :edit, :update, :destroy]
-  before_action :set_report, only: [:edit, :update, :destroy]
+  before_action :set_patient, only: %i[create edit update destroy]
+  before_action :set_report, only: %i[edit update destroy]
 
   # GET /reports/1/edit
-  def edit
-  end
+  def edit; end
 
-  def show
-  end
+  def show; end
 
   # POST /reports
   # POST /reports.json

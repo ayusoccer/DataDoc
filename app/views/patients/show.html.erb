@@ -4,10 +4,10 @@
 
 <h3>Treatments:</h3>
 <table class="table table-hover">
-  <thead class="thead-dark">
+  <thead class="thead-light">
     <tr>
       <th scope="col">Treatment</th>
-      <th scope="col">Drop</th>
+      <th scope="col">Delete</th>
       <th scope="col">Edit</th>
     </tr>
   </thead> <br/>
@@ -15,7 +15,7 @@
       <% @patient.treatments.each do |treatment| %>
         <tr>
         <td><%= link_to treatment.name, "/treatments/#{treatment.id}" %> </td>
-        <td><%= link_to 'Drop', "/patients/#{@patient.id}/treatments/#{treatment.id}", method: :delete %></td> 
+        <td><%= link_to 'Delete', "/patients/#{@patient.id}/treatments/#{treatment.id}", method: :delete %></td> 
         <td><%= link_to 'Edit Treatment', "/treatments/#{treatment.id}/edit" %></td> 
         </tr>
       <% end %>
@@ -30,7 +30,7 @@
 
 <h3>Reports:</h3>
 <table class="table table-hover">
-  <thead class="thead-dark">
+  <thead class="thead-light">
     <tr>
       <th scope="col">Number</th>
       <th scope="col">Date</th>
@@ -66,7 +66,7 @@
 
 <h3>Billing Statements:</h3>
 <table class="table table-hover">
-  <thead class="thead-dark">
+  <thead class="thead-light">
     <tr>
       <th scope="col">Number</th>
       <th scope="col">Date</th>
@@ -94,7 +94,7 @@
 <h3>Add a Billing Statement</h3>
 <%= form_with url: "/patients/#{@patient.id}/billingstatements" do |form| %>
   <%= form.label :statement_Number %>
-  <%= form.number_field 'billingstatement[statment_num]' %><br>
+  <%= form.number_field 'billingstatement[statement_num]' %><br>
   <%= form.label :date %>      
   <%= form.date_field 'billingstatement[date]' %><br>
   <%= form.label :description %>

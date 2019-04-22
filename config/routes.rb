@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   delete '/patients/:id/treatments/:treatment_id', to: 'patients#delete_treatment'
   resources :treatments
   resources :patients do
-    resources :reports, only: [:edit, :create, :update, :destroy]
-    resources :billingstatements, only: [:edit, :create, :update, :destroy]
+    resources :reports, only: %i[edit create update destroy]
+    resources :billingstatements, only: %i[edit create update destroy]
   end
 
   get '/login' => 'sessions#new'
