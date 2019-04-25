@@ -3,11 +3,11 @@
 <h1>Treatments</h1>
 
 <table class="table table-hover">
-  <thead class="thead-dark">
+  <thead class="thead-light">
     <tr>
       <th scope="col">Treatment</th>
       <th scope="col">Number of Patients</th>
-      <th scope="col">Destroy</th>
+      <th scope="col">Delete</th>
       <th scope="col">Edit</th>
     </tr>
   </thead>
@@ -16,7 +16,7 @@
         <tr>
         <td><%= link_to treatment.name, "/treatments/#{treatment.id}" %> </td>
         <td><%= pluralize treatment.patients.size, 'patient' %></td> 
-        <td><%= link_to 'Destroy', treatment, method: :delete, data: { confirm: 'Are you sure?' } %> </td> 
+        <td><%= link_to 'Delete', treatment, method: :delete, data: { confirm: 'Are you sure?' } %> </td> 
         <td><%= link_to 'Edit', edit_treatment_path(treatment) %></td>
         </tr>
       <% end %>

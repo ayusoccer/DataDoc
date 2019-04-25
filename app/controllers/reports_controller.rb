@@ -1,38 +1,18 @@
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[show edit update destroy]
-
-  # GET /reports
-  # GET /reports.json
-  def index
-    @reports = Report.all
-  end
-
-  # GET /reports/1
-  # GET /reports/1.json
-  def show; end
-
-  # GET /reports/new
-  def new
-    @report = Report.new
-  end
+  before_action :set_patient, only: %i[create edit update destroy]
+  before_action :set_report, only: %i[edit update destroy]
 
   # GET /reports/1/edit
   def edit; end
+
+  def show; end
 
   # POST /reports
   # POST /reports.json
   def create
     @report = Report.new(report_params)
-
-    respond_to do |format|
-      if @report.save
-        format.html { redirect_to @report, notice: 'Report was successfully created.' }
-        format.json { render :show, status: :created, location: @report }
-      else
-        format.html { render :new }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
-      end
-    end
+    @patient.reports << @report
+    redirect_to "/patients/#{@patient.id}"
   end
 
   # PATCH/PUT /reports/1
@@ -53,13 +33,14 @@ class ReportsController < ApplicationController
   # DELETE /reports/1.json
   def destroy
     @report.destroy
-    respond_to do |format|
-      format.html { redirect_to reports_url, notice: 'Report was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to "/patients/#{@patient.id}"
   end
 
   private
+
+  def set_patient
+    @patient = Patient.find(params[:patient_id])
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_report

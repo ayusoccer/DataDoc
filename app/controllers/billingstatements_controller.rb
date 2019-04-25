@@ -1,20 +1,13 @@
 class BillingstatementsController < ApplicationController
-  before_action :set_billingstatement, only: %i[show edit update destroy]
+  before_action :set_patient, only: %i[create edit update destroy]
+  before_action :set_billingstatement, only: %i[edit update destroy]
 
   # GET /billingstatements
   # GET /billingstatements.json
-  def index
-    @billingstatements = Billingstatement.all
-  end
 
   # GET /billingstatements/1
   # GET /billingstatements/1.json
   def show; end
-
-  # GET /billingstatements/new
-  def new
-    @billingstatement = Billingstatement.new
-  end
 
   # GET /billingstatements/1/edit
   def edit; end
@@ -23,16 +16,8 @@ class BillingstatementsController < ApplicationController
   # POST /billingstatements.json
   def create
     @billingstatement = Billingstatement.new(billingstatement_params)
-
-    respond_to do |format|
-      if @billingstatement.save
-        format.html { redirect_to @billingstatement, notice: 'Billingstatement was successfully created.' }
-        format.json { render :show, status: :created, location: @billingstatement }
-      else
-        format.html { render :new }
-        format.json { render json: @billingstatement.errors, status: :unprocessable_entity }
-      end
-    end
+    @patient.billingstatements << @billingstatement
+    redirect_to "/patients/#{@patient.id}"
   end
 
   # PATCH/PUT /billingstatements/1
@@ -53,13 +38,14 @@ class BillingstatementsController < ApplicationController
   # DELETE /billingstatements/1.json
   def destroy
     @billingstatement.destroy
-    respond_to do |format|
-      format.html { redirect_to billingstatements_url, notice: 'Billingstatement was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to "/patients/#{@patient.id}"
   end
 
   private
+
+  def set_patient
+    @patient = Patient.find(params[:patient_id])
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_billingstatement

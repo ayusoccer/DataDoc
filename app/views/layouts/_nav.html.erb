@@ -1,21 +1,60 @@
-<nav class="navbar navbar-expand-xl navbar-light bg-light">
+<style type="text/css">
+    html,
+    body {
+      overflow-x: hidden;
+    }
+    .navbar-light .navbar-brand {
+      color: #FFFFFF;
+    }
+
+    .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+      color: #FFFFFF;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+      color: #FFFFFF;
+    }
+
+    .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+      color: #ccc !important;
+    }
+    ul.nav.navbar-nav .dropdown.open .dropdown-toggle{
+      color: red;
+      background-color: green;
+    }   
+  }
+  </style>
+
+<nav class="navbar navbar-expand-xl navbar-light bg-primary">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="collapse navbar-collapse bg-primary" id="navbarSupportedContent">
     <ul class="navbar-nav">
       <% if logged_in? %>
-      <li class="nav-item mx-3">
-        <%= link_to 'Patients', '/patients' %>
+      <li class="nav-item dropdown bg-primary">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Patients
+        </a>
+        <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+          <%= link_to 'All Patients', '/patients', class: 'nav-link' %>
+          <%= link_to 'New Patient', '/patients/new', class: 'nav-link' %>
+        </div>
+      </li>
+      <li class="nav-item dropdown bg-primary">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Treatments
+        </a>
+        <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+          <%= link_to 'All Treatments', '/treatments', class: 'nav-link' %>
+          <%= link_to 'New Treatment', '/treatments/new', class: 'nav-link' %>
+        </div>
       </li>
       <li class="nav-item mx-3">
-        <%= link_to 'Treatments', '/treatments' %>
-      </li>
-      <li class="nav-item mx-3">
-        <%= link_to 'Log out', 'logout' %>
+        <%= link_to 'Log out', '/logout', method: :delete, class: 'nav-link' %>
       </li>
       <% end %>
     </ul>
    </div>
-</nav>
+</nav> <br/>

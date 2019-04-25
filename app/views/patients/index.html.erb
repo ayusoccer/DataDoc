@@ -9,7 +9,7 @@
       <th scope="col">Email</th>
       <th scope="col">Insurance</th>
       <th scope="col">Edit</th>
-      <th scope="col">Destroy</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
 
@@ -20,7 +20,7 @@
         <td><%= patient.email %></td>
         <td><%= patient.insurance %></td>
         <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-        <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

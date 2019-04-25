@@ -1,5 +1,5 @@
 class TreatmentsController < ApplicationController
-  before_action :set_treatment, except: [:create, :new, :index]
+  before_action :set_treatment, except: %i[create new index]
 
   # GET /treatments
   # GET /treatments.json

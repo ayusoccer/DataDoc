@@ -1,13 +1,14 @@
 <h1 align="center">DATA DOC</h1> <br/>
-<h3 align="center">Please sign up or log in.</h3> <br/>
+<h3 align="center">Patient management made simple</h3><br/>
+<h4 align="center">Please sign up or log in to continue.</h4> <br/>
 <h4 align="center">Login</h4>
 <div class="d-flex justify-content-center align-items-center container "> 
 
 <%= form_tag '/login' do %>
 
-  Email: <%= text_field_tag :email %> <br/>
-  Password: <%= password_field_tag :password %> <br/>
-  <%= submit_tag "Submit" %>
+  Email: <%= text_field_tag :email %> <br/><br/>
+  Password: <%= password_field_tag :password %> <br/><br/>
+  <h3 align="center"><input class="btn btn-outline-primary" type="submit" value="Submit"></h3> <br/><br/>
 
 <% end %>
 </div>
