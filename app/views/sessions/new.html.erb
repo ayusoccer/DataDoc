@@ -4,12 +4,7 @@
 <h4 align="center">Login</h4>
 <div class="d-flex justify-content-center align-items-center container "> 
 
-<%= form_tag '/login' do %>
+<%= render 'form', session: @session %>
 
-  Email: <%= text_field_tag :email %> <br/><br/>
-  Password: <%= password_field_tag :password %> <br/><br/>
-  <h3 align="center"><input class="btn btn-outline-primary" type="submit" value="Submit"></h3> <br/><br/>
-
-<% end %>
 </div>
 <h3 align="center"><%= link_to 'Sign Up', 'signup' %><h3>

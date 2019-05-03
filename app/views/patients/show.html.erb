@@ -38,7 +38,6 @@
       <th scope="col">Date</th>
       <th scope="col">Notes</th>
       <th scope="col">Delete</th>
-      <th scope="col">Edit</th>
     </tr>
   </thead> <br/>
   <tbody>
@@ -48,7 +47,6 @@
         <td><%= report.date %> </td>
         <td><%= report.notes %> </td>
         <td><%= link_to 'Delete Report', "/patients/#{@patient.id}/reports/#{report.id}", method: :delete %></td> 
-        <td><%= link_to 'Edit Report', "/reports/#{report.id}/edit" %></td> 
         </tr>
       <% end %>
   </tbody>
@@ -75,7 +73,6 @@
       <th scope="col">Description</th>
       <th scope="col">Total</th>
       <th scope="col">Delete</th>
-      <th scope="col">Edit</th>
     </tr>
   </thead> <br/>
   <tbody>
@@ -85,8 +82,7 @@
         <td><%= billingstatement.date %> </td>
         <td><%= billingstatement.description %> </td>
         <td><%= billingstatement.total %> </td>
-        <td><%= link_to 'Delete Bill', "/patients/#{@patient.id}//billingstatements/#{billingstatement.id}", method: :delete %></td> 
-        <td><%= link_to 'Edit Bill', "/billingstatements/#{billingstatement.id}/edit" %></td> 
+        <td><%= link_to 'Delete Bill', "/patients/#{@patient.id}/billingstatements/#{billingstatement.id}", method: :delete %></td> 
         </tr>
       <% end %>
   </tbody>
