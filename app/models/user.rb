@@ -1,7 +1,7 @@
 require 'sendgrid-ruby'
-include SendGrid
 
 class User < ApplicationRecord
+  include SendGrid
   has_secure_password
   validates :name, presence: true
   validates :email, presence: true
@@ -32,7 +32,7 @@ class User < ApplicationRecord
     data['personalizations'][0]['to'][0]['email'] = email
     # sg = SendGrid::API.new(api_key: Rails.application.secrets.sendgrid_api_key.to_s)
     sg = SendGrid::API.new(api_key: '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')
-    response = sg.client.mail._('send').post(request_body: data)
+    sg.client.mail._('send').post(request_body: data)
   end
 
   private
@@ -41,5 +41,4 @@ class User < ApplicationRecord
     return unless email && (!email.include?('@') || !email.include?('.'))
     errors.add(:email, "must have an '@' and a '.'")
   end
-
 end
