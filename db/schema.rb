@@ -10,55 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_190_422_133_603) do
-  create_table 'billingstatements', force: :cascade do |t|
-    t.date 'date'
-    t.text 'description'
-    t.float 'total'
-    t.integer 'statement_num'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'patient_id'
-    t.index ['patient_id'], name: 'index_billingstatements_on_patient_id'
+ActiveRecord::Schema.define(version: 20190422133603) do
+
+  create_table "billingstatements", force: :cascade do |t|
+    t.date "date"
+    t.text "description"
+    t.float "total"
+    t.integer "statement_num"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "patient_id"
+    t.index ["patient_id"], name: "index_billingstatements_on_patient_id"
   end
 
-  create_table 'patients', force: :cascade do |t|
-    t.string 'last_name'
-    t.string 'first_name'
-    t.string 'email'
-    t.string 'insurance'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "patients", force: :cascade do |t|
+    t.string "last_name"
+    t.string "first_name"
+    t.string "email"
+    t.string "insurance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'patients_treatments', force: :cascade do |t|
-    t.integer 'patient_id'
-    t.integer 'treatment_id'
-    t.index ['patient_id'], name: 'index_patients_treatments_on_patient_id'
-    t.index ['treatment_id'], name: 'index_patients_treatments_on_treatment_id'
+  create_table "patients_treatments", force: :cascade do |t|
+    t.integer "patient_id"
+    t.integer "treatment_id"
+    t.index ["patient_id"], name: "index_patients_treatments_on_patient_id"
+    t.index ["treatment_id"], name: "index_patients_treatments_on_treatment_id"
   end
 
-  create_table 'reports', force: :cascade do |t|
-    t.date 'date'
-    t.text 'notes'
-    t.integer 'report_num'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'patient_id'
-    t.index ['patient_id'], name: 'index_reports_on_patient_id'
+  create_table "reports", force: :cascade do |t|
+    t.date "date"
+    t.text "notes"
+    t.integer "report_num"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "patient_id"
+    t.index ["patient_id"], name: "index_reports_on_patient_id"
   end
 
-  create_table 'treatments', force: :cascade do |t|
-    t.string 'name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "treatments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'name'
-    t.string 'email'
-    t.string 'password_digest'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
 end

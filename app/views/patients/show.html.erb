@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <h1><%= @patient.full_name %></h1>
 
 <%= link_to 'Edit Patient', "/patients/#{@patient.id}/edit" %> | <%= link_to 'Delete Patient', "/patients/#{@patient.id}", method: :delete %> | <%= link_to 'Go Back', '/patients' %> <br/> <br/>

@@ -3,6 +3,9 @@ include SendGrid
 
 class User < ApplicationRecord
   has_secure_password
+  validates :name, presence: true
+  validates :email, presence: true
+  validate :email_chk
 
   def mail_to
     data = JSON.parse('{
@@ -31,4 +34,12 @@ class User < ApplicationRecord
     sg = SendGrid::API.new(api_key: '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')
     response = sg.client.mail._('send').post(request_body: data)
   end
+
+  private
+
+  def email_chk
+    return unless email && (!email.include?('@') || !email.include?('.'))
+    errors.add(:email, "must have an '@' and a '.'")
+  end
+
 end
