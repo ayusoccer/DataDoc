@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :authorize, except: %i[index show new create]
 
-  def new; end
+  def new
+    @user = User.new
+  end
 
   def show; end
 

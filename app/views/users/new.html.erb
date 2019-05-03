@@ -1,18 +1,7 @@
+<p id="notice"><%= notice %></p>
+
 <h1 align="center">Sign Up</h1>
 
 <div class="d-flex justify-content-center align-items-center container "> <br/>
 
-<%= form_for :user, url: '/users' do |f| %>
-  
-  <br/>Name: <%= f.text_field :name %><br/><br/>
-  Email: <%= f.text_field :email %><br/><br/>
-  Password: <%= f.password_field :password %><br/><br/>
-  Password Confirmation: <%= f.password_field :password_confirmation %><br/> <br/>
-  <h3 align="center"><input class="btn btn-outline-primary" type="submit" value="Submit"></h3> 
-
-<% end %>
-</div> <br/>
-
-<h4 align="center">After you sign up, an email will be sent to you to welcome you to our system!</h4>
-
-<h3 align="center"><a href="/login" class="btn btn-outline-primary" role="button">Back to Login</a></h3>>
+<%= render 'form', user: @user %> <br/>
