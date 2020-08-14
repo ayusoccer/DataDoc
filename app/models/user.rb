@@ -31,7 +31,7 @@ class User < ApplicationRecord
     }')
     data['personalizations'][0]['to'][0]['email'] = email
     # sg = SendGrid::API.new(api_key: Rails.application.secrets.sendgrid_api_key.to_s)
-    sg = SendGrid::API.new(api_key: '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')
+    sg = SendGrid::API.new(api_key: '')
     sg.client.mail._('send').post(request_body: data)
   end
 
